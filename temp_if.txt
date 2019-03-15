@@ -1,0 +1,85 @@
+if(buffer>=temp)
+{
+	if(stanje==1)
+	{
+		if(mag==0)
+		{
+			cout<<endl<<"Temperatura je visoka, prozor je zatvoren i klima vec radi! Sve je OK! "<<endl;
+		}
+		else
+		{
+			stanje=0;
+			digitalWrite(PIN,0);
+			delay(5000);
+			cout<<endl<<"Temperatura je visoka! Zatvori prozor, gasimo klimu!"<<endl;
+		}
+	}
+	else
+	{
+		if(mag==0)
+		{
+			stanje=1;
+			digitalWrite(PIN,1);
+			delay(5000);
+			cout<<endl<<"Temperatura je visoka, prozor je zatvoren ali klima nije radila pa se pali!"<<endl;
+		}
+		else
+		{
+			cout<<endl<<"Temperatura je visoka, prozor je otvoren i klima ne radi! Zatvori prozor da bi upalio klimu "<<endl;
+		}
+	}
+	
+}
+else
+{
+	if(stanje==1)
+	{
+		if(prekidac==0)
+		{
+			if(mag==0)
+			{
+				cout<<endl<<"Temperatura je niska, prozor je zatvoren i klima vec radi zbog korisnika! Sve je OK! "<<endl;
+			}
+			else
+			{
+				stanje=0;
+				digitalWrite(PIN,0);
+				delay(5000);
+				cout<<endl<<"Temperatura je niska! Otvoren je prozor, gasimo klimu!"<<endl;
+			}
+		}
+		else
+		{
+			stanje=0;
+			digitalWrite(PIN,0);
+			delay(5000);
+			cout<<endl<<"Temperatura je niska! Klima je radila ali je ugasena jer korisniku ne treba!"<<endl;
+		}
+	
+	}
+	else
+	{
+		if(prekidac==0)
+		{
+			if(mag==0)
+			{
+				stanje=1;
+				digitalWrite(PIN,1);
+				delay(5000);
+				cout<<endl<<"Temperatura je niska, prozor je zatvoren ali klima nije radila pa se pali!"<<endl;
+			}
+			else
+			{
+				cout<<endl<<"Temperatura je niska, prozor je otvoren i klima ne radi! Zatvori prozor da bi upalio klimu "<<endl;
+			}
+			
+		}
+		else
+		{
+			cout<<endl<<"Temperatura je niska, korisnik ne zahteva klimu i ona vec ne radi! Sve je OK! "<<endl;
+	
+		}
+		
+	}
+	
+}
